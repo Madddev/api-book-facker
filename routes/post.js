@@ -15,8 +15,11 @@ const {
     uncomment
 } = require("../controllers/post");
 const { requireSignin } = require("../controllers/auth");
+const { getAll, create } = require("../controllers/message");
 const { userById } = require("../controllers/user");
 const { createPostValidator } = require("../validator");
+const {check} = require('express-validator/check');
+
 
 const router = express.Router();
 
@@ -43,6 +46,12 @@ router.put("/post/:postId", requireSignin, isPoster, updatePost);
 router.delete("/post/:postId", requireSignin, isPoster, deletePost);
 // photo
 router.get("/post/photo/:postId", photo);
+//Messages
+router.get('/messages/:recipient',requireSignin, getAll);
+
+router.post('/messages/:recipient', [
+    check('content').not().isEmpty().withMessage('Field cannot be empty')
+], requireSignin, create);
 
 // any route containing :userId, our app will first execute userById()
 router.param("userId", userById);
