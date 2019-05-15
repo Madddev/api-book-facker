@@ -23,3 +23,18 @@ Gestionnaires des dépendances
 1- Utiliser npm ou yarn     
 2- npm install       
 3- En suite  npm run server pour lancer l'api.
+
+Api doc
+-------------
+
+        "/api": "api docs",
+        "/api/signup": "signup",
+        "/api/signin": "signin",
+        "/api/signout": "signout",
+        "/api/users": "get all users",
+        "/api/user/:userId": "get/update/delete user",
+        "/api/posts": "get all posts",
+        "/api/post/new/:userId": "create new post",
+        "/api/posts/by/:userId": "get posts by user",
+        "/api/post/:postId": "update/delete post"
+}
